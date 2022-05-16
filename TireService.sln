@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TireService", "TireService.csproj", "{D7A7C559-18A2-4947-A714-B2A6AE31C910}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7A7C559-18A2-4947-A714-B2A6AE31C910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A7C559-18A2-4947-A714-B2A6AE31C910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A7C559-18A2-4947-A714-B2A6AE31C910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A7C559-18A2-4947-A714-B2A6AE31C910}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49C75DAD-AA79-4331-A863-2CB0CC32C6A9}
+	EndGlobalSection
+EndGlobal

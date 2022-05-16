@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="TireService.View.MainView.Admin.PatchingUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TireService.View.MainView.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="BlockPhoto" BorderBrush="#f2e2cd" BorderThickness="1" Grid.Column="0" Grid.Row="0"  CornerRadius="15" Height="150" Width="150" HorizontalAlignment="Center">
+                <Image x:Name="PhotoUser" Source="Image\defaultPhoto.png" Width="140" Height="140"/>
+            </Border>
+
+            <TextBlock x:Name="CreateAccountTextBlock" Grid.Column="1" Grid.Row="0" Text="Добавить новый аккаунт" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource styleTextBlock}" Foreground="#f2e2cd" MouseLeftButtonUp="CreateAccountTextBlock_MouseLeftButtonUp"/>
+            <TextBlock Visibility="Hidden" x:Name="BackToPatchingUserPanel" Grid.Column="1" Grid.Row="0" Text="Назад" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource styleTextBlock}" Foreground="#f2e2cd" MouseLeftButtonUp="BackToPatchingUserPanel_MouseLeftButtonUp"/>
+
+
+            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Text="Фамилия" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+            <Border Grid.Column="1" Grid.Row="1" Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="240">
+                <TextBox x:Name="SurNameTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+            </Border>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Text="Имя" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+            <Border Grid.Column="1" Grid.Row="2" Background="#dadae3" CornerRadius="10" Height="40" Width="240">
+                <TextBox x:Name="NameTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"/>
+            </Border>
+
+            <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Text="Отчество" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+            <Border Grid.Column="1" Grid.Row="3" Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="240">
+                <TextBox x:Name="LastNameTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+            </Border>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Text="Логин" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+            <Border Grid.Column="1" Grid.Row="4" Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="240">
+                <TextBox x:Name="LoginTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+            </Border>
+
+            <TextBlock Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Text="Пароль" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+            <Border Grid.Column="1" Grid.Row="5" Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="240">
+                <TextBox x:Name="PasswordTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+            </Border>
+
+            <TextBlock Grid.Column="0" Grid.Row="6" x:Name="GenderTextBox" Text="Gender" Style="{StaticResource styleTextBlock}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <ComboBox x:Name="GenderComboBox" SelectionChanged="GenderComboBox_SelectionChanged" Grid.Column="1" Grid.Row="6" Height="40" Width="240">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NameGender}" Style="{StaticResource styleTextBlock}" Foreground="Black"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <TextBlock Grid.Column="0" Grid.Row="7" x:Name="RoleTextBox" Text="Role" Style="{StaticResource styleTextBlock}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <ComboBox x:Name="RoleComboBox" SelectionChanged="RoleComboBox_SelectionChanged" Grid.Column="1" Grid.Row="7" Height="40" Width="240">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NameRole}" Style="{StaticResource styleTextBlock}" Foreground="Black"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Column="0" Grid.Row="8" x:Name="StatusTextBox" Text="Status" Style="{StaticResource styleTextBlock}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <ComboBox x:Name="StatusComboBox" SelectionChanged="StatusComboBox_SelectionChanged" Grid.Column="1" Grid.Row="8" Height="40" Width="240" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NameStatus}" Style="{StaticResource styleTextBlock}" Foreground="Black"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button x:Name="CreateUserButton" Click="CreateUserButton_Click" Visibility="Hidden" Grid.Column="1" Grid.Row="9" Content="Создать пользователя" Height="40" Width="240" Style="{StaticResource styleButton}" Command="{Binding RegisterUpdate}" HorizontalAlignment="Center"/>
+
+            <Button x:Name="UpdateUserButton" Click="UpdateUserButton_Click" Grid.Column="1" Grid.Row="9" Content="Обновить данные" Height="40" Width="240" Style="{StaticResource styleButton}" Command="{Binding RegisterUpdate}" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <StackPanel x:Name="PanelDisplayUsers" Margin="5" Grid.Column="1">
+            <TextBlock Text="Пользователи" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Поиск по статусу" Style="{StaticResource styleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <ComboBox x:Name="StatusesComboBox" SelectionChanged="StatusesComboBox_SelectionChanged" Grid.Column="1" Grid.Row="0" Height="40" Width="240" Margin="10">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameStatus}" Style="{StaticResource styleTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Поиск по роли" Style="{StaticResource styleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <ComboBox x:Name="RolesComboBox" SelectionChanged="RolesComboBox_SelectionChanged" Grid.Column="1" Grid.Row="1" Height="40" Width="240" Margin="10">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameRole}" Style="{StaticResource styleTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Поиск по гендеру" Style="{StaticResource styleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <ComboBox x:Name="GendersComboBox" SelectionChanged="GendersComboBox_SelectionChanged" Grid.Column="1" Grid.Row="2" Height="40" Width="240" Margin="10">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameGender}" Style="{StaticResource styleTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Поиск" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <StackPanel>
+                        <Border Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="240">
+                            <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+
+                <Button Grid.Column="1" Grid.Row="3" x:Name="ClearButton" Content="Отчистить поиск" Style="{StaticResource styleButton}" Height="40" Width="240" Click="ClearButton_Click"/>
+            </Grid>
+
+            <DataGrid x:Name="DataGridUsers" SelectionChanged="DataGridUsers_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False" FontFamily="Georgia" FontSize="22" Margin="5" Background="#dadae3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Логин" Binding="{Binding Path=Login}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Отество" Binding="{Binding Path=Lastname}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Гендер" Binding="{Binding Path=UserGender}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Роль" Binding="{Binding Path=UserRole}" FontFamily="Georgia" FontSize="22"/>
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Path=UserStatus}" FontFamily="Georgia" FontSize="22"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

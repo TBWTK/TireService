@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="TireService.View.MainView.Account.PersonalAccountUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TireService.View.MainView.Account"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="20">
+                <Border BorderBrush="#dadae3" Background="#dadae3" BorderThickness="1"  CornerRadius="15" Height="150"  Width="150" HorizontalAlignment="Center">
+                    <Image x:Name="PhotoUser"  Width="140" Height="140"/>
+                </Border>
+            </StackPanel>
+            <TextBlock Text="Обновить фото"  Style="{StaticResource styleTextBlock}" MouseLeftButtonUp="DowlandPhoto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#f2e2cd" Margin="10"/>
+
+
+            <!--Отображение ФИО и пола-->
+            <StackPanel Grid.Row="1" x:Name="DefName" Visibility="Visible" VerticalAlignment="Top">
+                <TextBlock x:Name="SurNameTextBlock" Text="Фамилия" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="NameTextBlock" Text="Имя" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="LastNameTextBlock" Text="Отчество" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="GenderTextBlock" Text="Пол" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <TextBlock Text="Изменить данные" Margin="5" Style="{StaticResource styleTextBlock}" MouseLeftButtonUp="VisibleChangeName" HorizontalAlignment="Center" Foreground="#f2e2cd"/>
+            </StackPanel>
+
+
+            <!--Панель изменения имя, фамилия, отчество, гендера-->
+            <StackPanel Grid.Row="1" x:Name="ChangeName" Visibility="Hidden" VerticalAlignment="Center">
+                <TextBlock Text="Имя" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <Border Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="250">
+                    <TextBox x:Name="NameTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+                </Border>
+                <TextBlock Text="Фамилия" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <Border Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="250">
+                    <TextBox x:Name="SurNameTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+                </Border>
+                <TextBlock Text="Отчество" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <Border Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="250">
+                    <TextBox x:Name="LastNameTextBox" Style="{StaticResource styleTextBox}" Margin="5" VerticalAlignment="Center"  />
+                </Border>
+                <TextBlock Text="Пол" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                <Border Background="#dadae3" Margin="10" CornerRadius="10" Height="40" Width="250">
+                    <ComboBox Margin="5" x:Name="BoxGender">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NameGender}" Style="{StaticResource styleTextBlock}" Foreground="Black"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Border>
+                <Button Content="Изменить данные" Height="40" Width="250" Margin="5" Style="{StaticResource styleButton}" Click="UpdateNameUser"/>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Панель изменения пароля-->
+            <TextBlock x:Name="UpdatePassword" Text="Обновить пароль"  Style="{StaticResource styleTextBlock}" MouseLeftButtonUp="VisibleChangePassword" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#f2e2cd" Margin="10"/>
+
+            <StackPanel  Grid.Row="1" VerticalAlignment="Top">
+                <StackPanel x:Name="ChangePassword" Visibility="Hidden">
+                    <TextBlock Text="Введите старый пароль" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <Border Background="White"  CornerRadius="10" Height="40" Width="250" HorizontalAlignment="Center">
+                            <Grid>
+                                <PasswordBox x:Name="PassPassBox" Style="{StaticResource stylePasswordBox}" Margin="5" VerticalAlignment="Center" BorderBrush="Transparent"/>
+                                <TextBlock x:Name="PassTextBlock" Style="{StaticResource styleTextBlock}" Margin="5" Visibility="Hidden" Foreground="Black"/>
+                                <Button Width="40" Height="40" Margin="5 0 5 0" Style="{StaticResource styleButton}" HorizontalAlignment="Right" Background="#dadae3" PreviewMouseLeftButtonDown="CheckPassword" PreviewMouseLeftButtonUp="UnCheckPassword">
+                                    <Image Source="Image/padlock.png"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                    <TextBlock Text="Введите новый пароль" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <Border Background="White"  CornerRadius="10" Height="40" Width="250" HorizontalAlignment="Center">
+                            <Grid>
+                                <PasswordBox x:Name="PassPassBoxOne" Style="{StaticResource stylePasswordBox}" Margin="5" VerticalAlignment="Center" BorderBrush="Transparent"/>
+                                <TextBlock x:Name="PassTextBlockOne" Style="{StaticResource styleTextBlock}" Margin="5" Visibility="Hidden" Foreground="Black"/>
+                                <Button Width="40" Height="40" Margin="5 0 5 0" Style="{StaticResource styleButton}" HorizontalAlignment="Right" Background="#dadae3" PreviewMouseLeftButtonDown="CheckPasswordOne" PreviewMouseLeftButtonUp="UnCheckPasswordOne">
+                                    <Image Source="Image/padlock.png"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                    <TextBlock Text="Введите новый пароль" Style="{StaticResource styleTextBlock}" Margin="5" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <Border Background="White"  CornerRadius="10" Height="40" Width="250" HorizontalAlignment="Center">
+                            <Grid>
+                                <PasswordBox x:Name="PassPassBoxTwo" Style="{StaticResource stylePasswordBox}" Margin="5" VerticalAlignment="Center" BorderBrush="Transparent"/>
+                                <TextBlock x:Name="PassTextBlockTwo" Style="{StaticResource styleTextBlock}" Margin="5" Visibility="Hidden" Foreground="Black"/>
+                                <Button Width="40" Height="40" Margin="5 0 5 0" Style="{StaticResource styleButton}" HorizontalAlignment="Right" Background="#dadae3" PreviewMouseLeftButtonDown="CheckPasswordTwo" PreviewMouseLeftButtonUp="UnCheckPasswordTwo">
+                                    <Image Source="Image/padlock.png"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                    <Button x:Name="ButtonChangePassword" Content="Подтвердить" Height="40" Width="200" Margin="5" Style="{StaticResource styleButton}" Click="ButtonChangePassword_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</UserControl>
