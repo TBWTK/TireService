@@ -128,13 +128,15 @@
     <Compile Include="View\MainView\Admin\PatchingUserControl.xaml.cs">
       <DependentUpon>PatchingUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainView\Catalog\ProductCatalogUserControl.xaml.cs">
+      <DependentUpon>ProductCatalogUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView\Catalog\SettingProduct.xaml.cs">
+      <DependentUpon>SettingProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainView\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Theme\Dictionary1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Theme\RadioButtonDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -168,6 +170,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainView\Admin\PatchingUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainView\Catalog\ProductCatalogUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainView\Catalog\SettingProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,6 +250,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="View\MainView\Catalog\Image\back.png" />
+    <Resource Include="View\MainView\Catalog\Image\next.png" />
+    <Resource Include="View\MainView\Catalog\Image\shopping-cart.png" />
+    <Resource Include="View\MainView\Image\piggy-bank.png" />
     <Resource Include="View\MainView\Admin\Image\defaultPhoto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,6 +35,12 @@
                 </RadioButton.Content>
             </RadioButton>
 
+            <RadioButton x:Name="SettingProductPage" Style="{StaticResource StyleRadioButton}" Click="SettingProductPage_Click" Height="70" Width="70" Margin="10">
+                <RadioButton.Content>
+                    <Image Source="Image/piggy-bank.png" Width="60"/>
+                </RadioButton.Content>
+            </RadioButton>
+
             <RadioButton x:Name="AdminPage" Style="{StaticResource StyleRadioButton}" Click="AdminPage_Click" Height="70" Width="70" Margin="10">
                 <RadioButton.Content>
                     <Image Source="Image/stick-man.png" Width="60"/>

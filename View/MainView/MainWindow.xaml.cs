@@ -46,6 +46,14 @@ namespace TireService.View.MainView
         }
         private void CatalogPage_Click(object sender, RoutedEventArgs e)
         {
+            PageChange.Content = new Catalog.ProductCatalogUserControl(idUser);
+
+        }
+
+        private void SettingProductPage_Click(object sender, RoutedEventArgs e)
+        {
+            PageChange.Content = new Catalog.SettingProduct();
+
         }
         private void AdminPage_Click(object sender, RoutedEventArgs e)
         {
