@@ -233,7 +233,19 @@ namespace TireService.View.MainView.Catalog
                 LoadIdFromIndex();
             }
         }
-
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var filter = products.Where(a => a.Price >= Convert.ToInt32(PriceStart.Text) && a.Price <= Convert.ToInt32(PriceEnd.Text)).ToList();
+                ProductCatalog.ItemsSource = filter;
+                LoadIdFromIndex();
+            }
+            catch
+            {
+                MessageBox.Show("Введите число");
+            }
+        }
 
         // Переход к корзине
         private void MoveToBasket_Click(object sender, RoutedEventArgs e)
@@ -266,6 +278,8 @@ namespace TireService.View.MainView.Catalog
         {
             CategoryComboBox.SelectedIndex = -1;
             TypeComboBox.SelectedIndex = -1;
+            PriceStart.Text = "";
+            PriceEnd.Text = "";
             using (var context = new TireServiceEntities())
             {
                 CategoryComboBox.ItemsSource = context.Categories.ToList();
@@ -302,7 +316,56 @@ namespace TireService.View.MainView.Catalog
 
         private void MakeOrder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (HandlerProducts.Count != 0)
+            {
+                try
+                {
+                    using (var context = new TireServiceEntities())
+                    {
+                        var datetime = DateTime.Now;
+                        var onlydate = datetime.Date;
+                        Orders newOrder = new Orders()
+                        {
+                            User = idUser,
+                            Amount = additionsSum,
+                            Date = onlydate
+                        };
+                        context.Orders.Add(newOrder);
+                        context.SaveChanges();
 
+                        var getOrder = context.Orders.SingleOrDefault(o => o.User == idUser && o.Amount == additionsSum && o.Date == onlydate);
+
+                        foreach (var item in HandlerProducts)
+                        {
+                            Baskets productToBasket = new Baskets
+                            {
+                                Product = item.Id,
+                                Order = getOrder.Id
+
+                            };
+                            context.Baskets.Add(productToBasket);
+                        }
+                        context.SaveChanges();
+                    }
+                    MessageBox.Show("Заказ оформлен дон");
+
+                    additionsSum = 0;
+                    QuentytiProduct.Text = $"{additionsSum:0.00}";
+                    SumOrder.Text = $"{additionsSum:0.00}";
+
+                    HandlerProducts.Clear();
+                    BasketCatalog.ItemsSource = HandlerProducts.ToList();
+                }
+                catch
+                {
+                    MessageBox.Show("Произшла непредвиденная ошибка, помолитесь");
+                }
+
+            }
+            else
+                MessageBox.Show("Товаров нет в корзине");
         }
+
+
     }
 }
